@@ -252,7 +252,7 @@ fn transform_key(key: KeyboardKey) -> Key {
         KeyboardKey::DownArrow => Key::DownArrow,
         KeyboardKey::LeftArrow => Key::LeftArrow,
         KeyboardKey::RightArrow => Key::RightArrow,
-        KeyboardKey::OEM2 => Key::BrightnessDown, // Fix: Use proper key
+        KeyboardKey::OEM2 => Key::End, // Use a placeholder or default key
     }
 }
 
