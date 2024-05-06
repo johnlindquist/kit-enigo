@@ -1,6 +1,6 @@
 #![deny(clippy::all)]
 use napi_derive::napi;
-use napi::bindgen_prelude::{Int32Array, Uint16Array};
+use napi::bindgen_prelude::{Uint16Array};
 
 
 use enigo::{
