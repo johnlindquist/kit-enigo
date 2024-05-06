@@ -1,6 +1,6 @@
 {
   "name": "@johnlindquist/kit-enigo",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Template project for writing node package with napi-rs",
   "main": "index.js",
   "repository": "johnlindquist/kit-enigo",
