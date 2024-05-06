@@ -133,7 +133,7 @@ impl EnigoJs {
   #[napi]
   pub fn release_key(&mut self, keys: Vec<KeyboardKey>) -> Result<(), napi::Error> {
     for key in keys {
-      let key = transform_key(key); // Fix: use snake_case for function name
+      let key = transform_key(key);
       self
         .enigo
         .key(key, Release)
@@ -144,24 +144,9 @@ impl EnigoJs {
 
   // Press then Release Key
   #[napi]
-  pub fn press_then_release_key(&mut self, keys: Vec<ToggleKey>) -> Result<(), napi::Error> {
-    // Press
-    for key in keys {
-      let key = transform_key(key.value);
-      self
-        .enigo
-        .key(key, Press)
-        .map_err(|e| napi::Error::from_reason(e.to_string()))?;
-    }
-
-    // Then Release
-    for key in keys {
-      let key = transform_key(key.value);
-      self
-        .enigo
-        .key(key, Release)
-        .map_err(|e| napi::Error::from_reason(e.to_string()))?;
-    }
+  pub fn press_then_release_key(&mut self, keys: Vec<KeyboardKey>) -> Result<(), napi::Error> {
+    self.press_key(keys.clone())?;
+    self.release_key(keys.clone())?;
     Ok(())
   }
 }

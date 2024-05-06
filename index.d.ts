@@ -103,4 +103,5 @@ export class Enigo {
   typeText(content: string): void
   pressKey(keys: Array<KeyboardKey>): void
   releaseKey(keys: Array<KeyboardKey>): void
+  pressThenReleaseKey(keys: Array<KeyboardKey>): void
 }
