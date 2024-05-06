@@ -123,7 +123,7 @@ impl EnigoJs {
       let key = transform_key(key); // Fix: use snake_case for function name
       self
         .enigo
-        .key(key, Click)
+        .key(key, Press)
         .map_err(|e| napi::Error::from_reason(e.to_string()))?;
     }
     Ok(())
@@ -220,6 +220,7 @@ pub enum KeyboardKey {
   DownArrow = 51,
   LeftArrow = 52,
   RightArrow = 53,
+  Meta = 54,
 }
 
 // Fix: Use snake_case for function name
@@ -267,6 +268,7 @@ fn transform_key(key: KeyboardKey) -> Key {
     KeyboardKey::Divide => Key::Unicode('/'),
     KeyboardKey::Tab => Key::Tab,
     KeyboardKey::CapsLock => Key::CapsLock,
+    KeyboardKey::Meta => Key::Meta,
     KeyboardKey::Shift => Key::Shift,
     KeyboardKey::Control => Key::Control,
     KeyboardKey::Alt => Key::Alt,

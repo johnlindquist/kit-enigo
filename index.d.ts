@@ -67,16 +67,11 @@ export const enum KeyboardKey {
   DownArrow = 51,
   LeftArrow = 52,
   RightArrow = 53,
+  Meta = 54,
 }
 export interface Point {
   x: number
   y: number
-}
-export interface Color {
-  r: number
-  g: number
-  b: number
-  a: number
 }
 export interface ToggleKey {
   value: KeyboardKey
