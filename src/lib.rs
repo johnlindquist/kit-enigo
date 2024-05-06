@@ -8,6 +8,12 @@ use enigo::{
   Enigo, Key, Keyboard, Mouse, Settings,
 };
 
+impl Default for EnigoJs {
+  fn default() -> Self {
+    Self::new()
+  }
+}
+
 #[napi(js_name = "Enigo")]
 pub struct EnigoJs {
   enigo: Enigo,
@@ -285,29 +291,6 @@ pub struct Point {
 impl Point {
   pub fn new(x: i32, y: i32) -> Point {
     Point { x, y }
-  }
-}
-
-#[napi(object)]
-pub struct Color {
-  pub r: u8,
-  pub g: u8,
-  pub b: u8,
-  pub a: u8,
-}
-
-impl Color {
-  pub fn new(r: u8, g: u8, b: u8, a: u8) -> Color {
-    Color { r, g, b, a }
-  }
-
-  pub fn default() -> Color {
-    Color {
-      r: 0,
-      g: 0,
-      b: 0,
-      a: 0,
-    }
   }
 }
 
