@@ -3,7 +3,10 @@
   "version": "1.0.5",
   "description": "Template project for writing node package with napi-rs",
   "main": "index.js",
-  "repository": "johnlindquist/kit-enigo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnlindquist/kit-enigo.git"
+  },
   "license": "MIT",
   "keywords": [
     "napi-rs",
