@@ -149,6 +149,55 @@ impl EnigoJs {
     self.release_key(keys.clone())?;
     Ok(())
   }
+
+  fn get_os_specific_keys(&self, key: KeyboardKey) -> Vec<KeyboardKey> {
+    #[cfg(target_os = "macos")]
+    {
+      vec![KeyboardKey::Meta, key]
+    }
+    #[cfg(not(target_os = "macos"))]
+    {
+      vec![KeyboardKey::Control, key]
+    }
+  }
+
+  // General function to trigger a key event
+  fn trigger_key_event(&mut self, key: KeyboardKey) -> Result<(), napi::Error> {
+    let keys = self.get_os_specific_keys(key);
+    self
+      .press_then_release_key(keys)
+      .map_err(|e| napi::Error::from_reason(e.to_string()))
+  }
+
+  // Trigger a "copy" event
+  #[napi]
+  pub fn copy(&mut self) -> Result<(), napi::Error> {
+    self.trigger_key_event(KeyboardKey::C)
+  }
+
+  // Trigger a "paste" event
+  #[napi]
+  pub fn paste(&mut self) -> Result<(), napi::Error> {
+    self.trigger_key_event(KeyboardKey::V)
+  }
+
+  // Trigger a "cut" event
+  #[napi]
+  pub fn cut(&mut self) -> Result<(), napi::Error> {
+    self.trigger_key_event(KeyboardKey::X)
+  }
+
+  // Trigger a "select all" event
+  #[napi]
+  pub fn select_all(&mut self) -> Result<(), napi::Error> {
+    self.trigger_key_event(KeyboardKey::A)
+  }
+
+  // Trigger an "undo" event
+  #[napi]
+  pub fn undo(&mut self) -> Result<(), napi::Error> {
+    self.trigger_key_event(KeyboardKey::Z)
+  }
 }
 
 // Get Active Window

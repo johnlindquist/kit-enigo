@@ -104,4 +104,9 @@ export class Enigo {
   pressKey(keys: Array<KeyboardKey>): void
   releaseKey(keys: Array<KeyboardKey>): void
   pressThenReleaseKey(keys: Array<KeyboardKey>): void
+  copy(): void
+  paste(): void
+  cut(): void
+  selectAll(): void
+  undo(): void
 }
